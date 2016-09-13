@@ -18,4 +18,4 @@ COPY production.env $CABOT_PATH/conf/production.env
 
 WORKDIR $CABOT_PATH
 
-RUN foreman run -e conf/production.env $VENV/bin/pip install --editable $CABOT_PATH --exists-action=w
+RUN foreman run -e conf/production.env $VENV/bin/pip install --editable $CABOT_PATH --exists-action=w --index-url=http://pypi.python.org/simple/
