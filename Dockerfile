@@ -1,4 +1,4 @@
-FROM docker.europe.intranet:5000/centos:7
+FROM centos:7
 
 ENV VENV=/home/cabot/venv CABOT_PATH=/opt/cabot
 
