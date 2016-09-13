@@ -18,7 +18,7 @@ COPY production.env $CABOT_PATH/conf/production.env
 
 WORKDIR $CABOT_PATH
 
-RUN su cabot -c 'source {venv}/bin/activate; pip install versiontools; \
+RUN su cabot -c 'source $VENV/bin/activate; pip install versiontools; \
                  foreman run -e conf/production.env $VENV/bin/pip install --editable $CABOT_PATH --exists-action=w; \
                  foreman run -e conf/production.env python manage.py collectstatic --noinput; \
                  foreman run -e conf/production.env python manage.py compress'
