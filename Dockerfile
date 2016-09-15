@@ -10,7 +10,7 @@ RUN yum install -y git epel-release gcc gcc-c++ make python-devel python-virtual
     echo 'requirepass cabot' >> /etc/redis.conf; \
     useradd cabot; \
     mkdir /opt/cabot; \
-    chown cabot $CABOT_PATH; \
+    chown cabot $CABOT_PATH; 
 
 COPY production.env $CABOT_PATH/conf/production.env
 COPY run.sh nginx.conf /tmp/
