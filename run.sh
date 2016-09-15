@@ -2,7 +2,7 @@
 
 source $VENV/bin/activate
 env > /tmp/env
-CONF=conf/production.env,/tmp/env
+CONF=/tmp/production.env,/tmp/env
 
 if [[ $MIGRATE_DB == true || $MIGRATE_DB == TRUE ]]; then
     echo "migrate db"
