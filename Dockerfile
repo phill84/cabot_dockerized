@@ -2,7 +2,7 @@ FROM centos:7
 
 ENV VENV=/home/cabot/venv CABOT_PATH=/opt/cabot
 
-RUN set -x; yum install -y git epel-release gcc gcc-c++ make python-devel python-virtualenv postgresql-devel libxml2-devel libxslt-devel cyrus-sasl-devel openldap-devel rubygems; \
+RUN set -e; yum install -y git epel-release gcc gcc-c++ make python-devel python-virtualenv postgresql-devel libxml2-devel libxslt-devel cyrus-sasl-devel openldap-devel rubygems; \
     yum install -y python-pip python-versiontools nodejs npm nginx redis; \
     pip install -U pip; \
     npm install -g coffee-script less@1.3; \
@@ -18,7 +18,7 @@ USER cabot
 WORKDIR $CABOT_PATH
 EXPOSE 8080
 
-RUN set -x; git clone https://github.com/arachnys/cabot.git $CABOT_PATH; \
+RUN set -e; git clone https://github.com/arachnys/cabot.git $CABOT_PATH; \
     virtualenv --setuptools $VENV; \
     source $VENV/bin/activate; pip install versiontools; \
     foreman run -e /tmp/production.env $VENV/bin/pip install --editable $CABOT_PATH --exists-action=w; \
